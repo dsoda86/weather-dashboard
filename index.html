@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+    <script> src="https://code.jquery.com/jquery-3.6.4.min.js"</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css" />
@@ -13,15 +13,16 @@
 </head>
 
 <body class="container-fluid">
+    <!-- App Name Banner-->
     <header class="hero">
         <div class="d-flex p-2 justify-content-center fs-1 text-white">Weather Dashboard</div>
     </header>
-
-    <div class="row content-row container-fluid">
-        <div class="col-12 col-md-3 bg-secondary-subtle pt-3">
+    <!-- Search for a city container-->
+    <div class="row content-row container-fluid ms-1 mt-2">
+        <div class="col-12 col-md-3 bg-secondary-subtle py-3">
             <form>
                 <div>
-                    <i class="fa-regular fa-city"></i>
+                    <i class="fa-solid fa-tree-city"></i>
                     <label class="form-label fs-5 fw-bold" for="city">Search for a City:</label>
                     <input class="form-control" type="text" placeholder="Enter City" aria-label="default enter city">
                     <div class="append-city">
@@ -30,20 +31,53 @@
                     </div>
                 </div>
             </form>
-
+            <!-- Previously searched cities should be appended to ul as li after clicking search button-->
             <div class="card mt-4 mb-4 search-list-container">
                 <ul id="search-list" class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">city 1</li>
+                    <li class="list-group-item">city 2</li>
+                    <li class="list-group-item">city 3</li>
                 </ul>
             </div>
         </div>
-
-        <div id="weather" class="col-12">
-
-        </div>
-            
+        <!-- Main weather section containing current city card and 5 day forecast section-->
+        <main id="weather-main" class="col-12 col-md-9">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="city-stats">
+                                <h2 id="current-city">City-Stats<span id="current-date"></span></h2>
+                                <p>Temp:<span id="temp-stats"></span></p>
+                                <p>Wind:<span id="wind-stats"></span></p>
+                                <p>Humidity:<span id="humidity-stats"></span></p>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+            <!-- 5 Day forecast title break-->
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h3>5-Day Forecast:</h3>
+                </div>
+            </div>
+            <!-- 5 Day Forecast Cards coming from API-->
+            <div id="future-forecast" class="row">
+                <div class="col-12">
+                    <div class="card forecast-cards">
+                        <div class="card-body">
+                            <h5 class="card-title">Date</h5>
+                            <i class="fa-solid fa-sun"></i>
+                            <p class="card-text">Temp:</p>
+                            <p class="card-text">Wind:</p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
+                  </div>
+                </div>
+            </div>
+        </main>
+    </div>       
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
