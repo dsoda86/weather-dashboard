@@ -18,9 +18,22 @@ function weatherDashboard(event) {
     var cityName = cityInputEl.value;
     getCityForecast(cityName);
 }
-//searched city saved and appended to list as buttons
+//searched city saved and appended to list as buttons using template literal to create the new buttons
 function displaySearchedCity () {
-    //localStorage.getItem
+    if (localStorage.getItem("city")) {
+        searchHistory = JSON.parse(localStorage.getItem("city"));
+    }
+    var searchList =" ";
+        for (var i = 0; i < searchHistory.length; i++) {
+            searchList = searchList + `<button class="btn btn-secondary my-2" type="submit">${searchHistory[i]}</button>`
+        }
+        pastCitiesEl.textContent = searchList;
+        var appendList = document.querySelectorAll(".appendList");
+        for (var i = 0; i < appendList.length; i++) {
+            appendList[i].addEventListener("click", function() {
+                getCityForecast(this.textContent)   
+            })
+        }
 }
 //searched city loads current weather info and a 5 day forecast
 function getCityForecast(cityName) {
@@ -38,7 +51,11 @@ function getCityForecast(cityName) {
                     return response.json();
                 })
                 .then(function (futureData) {
-                    //localStorage.setItem
+                    if (searchHistory.includes(currentData.name) ===false) {
+                        searchHistory.push(currentData.name);
+                        localStoragesetItem("city", JSON.stringify(searchHistory));
+                    }
+                    displaySearchedCity();
                 }
                 //Append current city weather ul and li
                 //Append 5 day forecast ul and li
@@ -46,6 +63,7 @@ function getCityForecast(cityName) {
                 )
         })
 }
+displaySearchedCity();
 
 // clearBtn function / event listener
 
