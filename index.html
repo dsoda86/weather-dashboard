@@ -22,7 +22,7 @@
         <div class="row">
             <!-- Search Box-->
             <div class="col-12 col-md-3 bg-light py-3">
-                <form id="">
+                <form id="search-city">
                     <i class="fa-solid fa-tree-city"></i>
                     <label class="fs-5 fw-bold">Search for a City:</label>
                     <input class="form-control my-2" type="search" placeholder="Enter City" id="city-input">
@@ -31,7 +31,7 @@
 
                 <button class="btn btn-danger my-2 w-100" type="submit" id="clear-button">Clear History</button>
                 <hr>
-                <div class="search-history" id="search-history">
+                <div class="past-cities" id="past-cities">
                     <!-- Append buttons for previously searched cities -->
                     <!-- <button class="btn bg-dark-subtle text-black my-2 w-100 " type="submit">City 1</button> -->
                 </div>
@@ -41,7 +41,9 @@
                 <div class="row current-weather" id="current-weather">
                     <!-- Append current day weather here-->
                 </div>
-
+                
+                <div class="row fs-2 ps-2 pt-2">5 Day Forecast:</div>
+                
                 <div class="future-forecast" id="future-forecast">
                     <!-- Append ul and li items for each day and info for 5 day forecast-->
                     <!-- <ul class="col-2 day">
