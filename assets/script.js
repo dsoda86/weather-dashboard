@@ -1,6 +1,4 @@
-
- var apiKey = "aa6a965bdeca3df25b15a8693bbf86d9";
- //var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}";
+var apiKey = "aa6a965bdeca3df25b15a8693bbf86d9";
 
  var searchCity = document.getElementById("#search-city");
  var cityInputEl = document.getElementById("#city-input");
@@ -12,18 +10,21 @@
  var searchHistory = [];
 
 //Needs:
-//event trigger for clicking on search button / formSubmitHandler from activity/ 
+//event trigger for clicking on search button / formSubmitHandler from activity/ event listener for submit form
 function weatherDashboard(event) {
     event.preventDefault();
     var cityName = cityInputEl.value;
     getCityForecast(cityName);
 }
+
+searchCity.addEventListener("submit", weatherDashboard)
+
 //searched city saved and appended to list as buttons using template literal to create the new buttons
 function displaySearchedCity () {
     if (localStorage.getItem("city")) {
         searchHistory = JSON.parse(localStorage.getItem("city"));
     }
-    var searchList =" ";
+    var searchList = " ";
         for (var i = 0; i < searchHistory.length; i++) {
             searchList = searchList + `<button class="btn btn-secondary my-2" type="submit">${searchHistory[i]}</button>`
         }
@@ -45,7 +46,7 @@ function getCityForecast(cityName) {
         .then(function (currentData) {
             console.log(currentData);
 
-            var parametersURL = "https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${currentData.coord.lon}&units=imperial&appid=aa6a965bdeca3df25b15a8693bbf86d9";
+            var parametersURL = "https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=aa6a965bdeca3df25b15a8693bbf86d9";
             fetch(parametersURL)
                 .then(function (response) {
                     return response.json();
@@ -65,7 +66,12 @@ function getCityForecast(cityName) {
 }
 displaySearchedCity();
 
-// clearBtn function / event listener
+// clearBtn function / event listener / local storage
+function clearPastCities() {
+    localStorage.clear();
+    pastSearchedCitiesEl.textContent = " ";
+    
+}
 
 //
  
