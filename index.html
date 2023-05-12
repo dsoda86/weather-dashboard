@@ -16,68 +16,47 @@
     <header class="hero">
         <div class="d-flex p-2 justify-content-center fs-1 text-white">Weather Dashboard</div>
     </header>
-    <!-- Search for a city container-->
-    <div class="row content-row container-fluid ms-1 mt-2">
-        <div class="col-12 col-md-3 bg-secondary-subtle py-3">
-            <form>
-                <div>
+
+    <!-- App Content Container-->
+    <main class="container-fluid">
+        <div class="row">
+            <!-- Search Box-->
+            <div class="col-12 col-md-3 bg-light py-3">
+                <form id="">
                     <i class="fa-solid fa-tree-city"></i>
-                    <label class="form-label fs-5 fw-bold" for="city">Search for a City:</label>
-                    <input id="search-city" class="form-control" type="text" placeholder="Enter City" aria-label="default enter city">
-                    <div class="append-city">
-                        <button id="btn-search" class="btn btn-info d-flex justify-content-center align-items-center w-100 " type="button">Search
-                        </button>
-                    </div>
+                    <label class="fs-5 fw-bold">Search for a City:</label>
+                    <input class="form-control my-2" type="search" placeholder="Enter City" id="city-input">
+                    <button class="btn btn-primary my-2 w-100" type="submit" id="search-button"> Search</button>
+                </form>
+
+                <button class="btn btn-danger my-2 w-100" type="submit" id="clear-button">Clear History</button>
+                <hr>
+                <div class="search-history" id="search-history">
+                    <!-- Append buttons for previously searched cities -->
+                    <!-- <button class="btn bg-dark-subtle text-black my-2 w-100 " type="submit">City 1</button> -->
                 </div>
-            </form>
-            <!-- Previously searched cities should be appended to ul as li after clicking search button-->
-            <div class="card mt-4 mb-4 search-list-container">
-                <ul id="search-list" class="list-group list-group-flush">
-                    <li class="list-group-item">city 1</li>
-                    <li class="list-group-item">city 2</li>
-                    <li class="list-group-item">city 3</li>
-                </ul>
+            </div>
+
+            <div class="col-12 col-md-9">
+                <div class="row current-weather" id="current-weather">
+                    <!-- Append current day weather here-->
+                </div>
+
+                <div class="future-forecast" id="future-forecast">
+                    <!-- Append ul and li items for each day and info for 5 day forecast-->
+                    <!-- <ul class="col-2 day">
+                            <li>Date</li>
+                            <li>Img Icon</li>
+                            <li>Temp:</li>
+                            <li>Wind:</li>
+                            <li>Humidity:</li> -->
+
+                </div>
             </div>
         </div>
-        <!-- Main weather section containing current city card and 5 day forecast section-->
-        <main id="weather-main" class="col-12 col-md-9">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="city-stats">
-                                <h2 id="current-city">City-Stats<span id="current-date"></span></h2>
-                                <p>Temp:<span id="temp-stats"></span></p>
-                                <p>Wind:<span id="wind-stats"></span></p>
-                                <p>Humidity:<span id="humidity-stats"></span></p>
-                            </div>
-                        </div>        
-                    </div>
-                </div>
-            </div>
-            <!-- 5 Day forecast title break-->
-            <div class="row mt-3">
-                <div class="col-12">
-                    <h3>5-Day Forecast:</h3>
-                </div>
-            </div>
-            <!-- 5 Day Forecast Cards coming from API-->
-            <div id="future-forecast" class="row">
-                <div class="col-12">
-                    <div class="card forecast-cards">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <i class="fa-solid fa-sun"></i>
-                            <p class="card-text">Temp:</p>
-                            <p class="card-text">Wind:</p>
-                            <p class="card-text">Humidity:</p>
-                        </div>
-                  </div>
-                </div>
-            </div>
-        </main>
-    </div>       
-    <script> src="https://code.jquery.com/jquery-3.6.4.min.js"</script>
+    </main>     
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="./assets/script.js"></script>

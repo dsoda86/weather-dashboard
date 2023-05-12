@@ -6,14 +6,8 @@
     background: linear-gradient(0.25turn, #f69d3c, #3f87a6, #09035e);
 } 
 
-.container-fluid, .content-row {
+.container-fluid {
     height:100%;
 }
 
-.search-list-container {
-    text-align: center;
-}
 
-.city-stats {
-    
-}
